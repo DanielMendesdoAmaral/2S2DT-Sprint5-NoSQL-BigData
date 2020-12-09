@@ -1,0 +1,26 @@
+[
+   {
+      "Id":"EA23FF9B-F3F8-4458-F301-08D889A0B492",
+      "DataCriacao":"2020-11-15T16:57:39.0372486",
+      "DataAlteracao":"2020-11-15T16:57:39.0377931",
+      "Nome":"UX\/UI Design",
+      "UrlImagem":"http:\/\/192.168.1.104:5000\/upload\/imagens\/e47e34a40c9840d588abc2938a733b94.png",
+      "Link":"https:\/\/link.com",
+      "DataInicial":"0001-01-01T00:00:00",
+      "DataFinal":"0001-01-01T00:00:00",
+      "Descricao":"Aprenda sobre o mercado de UX\/UI Design.",
+      "CategoriaId":"5B6B2556-7AD2-4E7C-2A93-08D889A08245"
+   },
+   {
+      "Id":"8D1EA74E-5371-49CC-F302-08D889A0B492",
+      "DataCriacao":"2020-11-15T16:58:46.9695197",
+      "DataAlteracao":"2020-11-15T16:58:46.9695426",
+      "Nome":"Desenvolvimento",
+      "UrlImagem":"http:\/\/192.168.1.104:5000\/upload\/imagens\/ec4e61ff6747476794974035e6386467.jpg",
+      "Link":"https:\/\/link2.com",
+      "DataInicial":"0001-01-01T00:00:00",
+      "DataFinal":"0001-01-01T00:00:00",
+      "Descricao":"Desafios do desenvolvimento de software.",
+      "CategoriaId":"5B6B2556-7AD2-4E7C-2A93-08D889A08245"
+   }
+]
