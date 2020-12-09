@@ -4,6 +4,7 @@
     public interface INyousDatabaseSettings
     {
         public string EventosCollectionName { get; set; }
+        public string CategoriasCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }
@@ -11,6 +12,7 @@
     public class NyousDatabaseSettings : INyousDatabaseSettings
     {
         public string EventosCollectionName { get; set; }
+        public string CategoriasCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }

@@ -32,6 +32,8 @@ namespace Nyous_API_MongoDB
             //Injeção de dependência para o repository.
             services.AddSingleton<IEventoRepository, EventoRepository>();
 
+            services.AddSingleton<ICategoriaRepository, CategoriaRepository>();
+
             services.AddControllers();
         }
 

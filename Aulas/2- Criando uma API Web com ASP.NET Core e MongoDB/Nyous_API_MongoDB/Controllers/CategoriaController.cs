@@ -7,22 +7,22 @@ namespace Nyous_API_MongoDB.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EventoController : ControllerBase
+    public class CategoriaController : ControllerBase
     {
-        private readonly IEventoRepository _eventoRepository;
+        private readonly ICategoriaRepository _categoriaRepository;
 
-        public EventoController(IEventoRepository eventoRepository)
+        public CategoriaController(ICategoriaRepository categoriaRepository)
         {
-            _eventoRepository = eventoRepository;
+            _categoriaRepository = categoriaRepository;
         }
 
-        // GET: api/<EventoController>
+        // GET: api/<CategoriaController>
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
-                return Ok(_eventoRepository.Listar());
+                return Ok(_categoriaRepository.Listar());
             }
             catch (Exception ex)
             {
@@ -30,13 +30,13 @@ namespace Nyous_API_MongoDB.Controllers
             }
         }
 
-        // GET api/<EventoController>/buscar/id/5
+        // GET api/<CategoriaController>/buscar/id/5
         [HttpGet("buscar/id/{id}")]
         public IActionResult Get(string id)
         {
             try
             {
-                return Ok(_eventoRepository.BuscarPorId(id));
+                return Ok(_categoriaRepository.BuscarPorId(id));
             }
             catch (Exception ex)
             {
@@ -44,13 +44,13 @@ namespace Nyous_API_MongoDB.Controllers
             }
         }
 
-        // POST api/<EventoController>
+        // POST api/<CategoriaController>
         [HttpPost]
-        public IActionResult Post([FromBody] Evento evento)
+        public IActionResult Post([FromBody] Categoria categoria)
         {
             try
             {
-                return Ok(_eventoRepository.Adicionar(evento));
+                return Ok(_categoriaRepository.Adicionar(categoria));
             }
             catch (Exception ex)
             {
@@ -58,13 +58,13 @@ namespace Nyous_API_MongoDB.Controllers
             }
         }
 
-        // PUT api/<EventoController>/5
+        // PUT api/<CategoriaController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(string id, [FromBody] Evento evento)
+        public IActionResult Put(string id, [FromBody] Categoria categoria)
         {
             try
             {
-                return Ok(_eventoRepository.Atualizar(id, evento));
+                return Ok(_categoriaRepository.Atualizar(id, categoria));
             }
             catch (Exception ex)
             {
@@ -72,13 +72,13 @@ namespace Nyous_API_MongoDB.Controllers
             }
         }
 
-        // DELETE api/<EventoController>/5
+        // DELETE api/<CategoriaController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
             try
             {
-                _eventoRepository.Deletar(id);
+                _categoriaRepository.Deletar(id);
 
                 return Ok();
             }
