@@ -9,12 +9,13 @@ import {firebaseConfig} from "./utils/firebaseConfig";
 
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
+import Eventos from "./pages/eventos/eventos";
 
 ReactDOM.render(
   <React.StrictMode>
     {/*Aqui, coloque esta tag passando as configurações do projeto no firebase, referenciado ele.*/}
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-      <Login/>
+      <Eventos/>
     </FirebaseAppProvider>
   </React.StrictMode>,
   document.getElementById('root')

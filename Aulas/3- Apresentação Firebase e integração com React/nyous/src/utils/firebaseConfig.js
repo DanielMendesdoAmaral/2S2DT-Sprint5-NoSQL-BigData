@@ -12,4 +12,7 @@ export var firebaseConfig = {
     appId: "1:87961019552:web:cafc10f74b06f84aef15c5"
 };
 // Inicializa o firebase passando as configurações.
-firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
+
+//O firestore é um banco de dados NoSQL na nuvem do Google, um banco realtime (você precisa criar o banco no firebase para o projeto).
+export const db = app.firestore();
