@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from "react";
 import {Jumbotron, Card, Form, Container, Button, Row, Col} from "react-bootstrap";
 import {db} from "../../utils/firebaseConfig";
+import {storage} from "../../utils/firebaseConfig";
+import FileUploader from "react-firebase-file-uploader";
 
 const Eventos = () => {
     const [id, setId] = useState("");
     const [nome, setNome] = useState("");
     const [descricao, setDescricao] = useState("");
+    const [urlImagem, setUrlImagem] = useState("");
 
     const [eventos, setEventos] = useState([]);
 
@@ -21,7 +24,8 @@ const Eventos = () => {
             return {
                 id: documento.id,
                 nome: documento.data().nome,
-                descricao: documento.data().descricao
+                descricao: documento.data().descricao,
+                urlImagem: documento.data().urlImagem
             }
         });
         setEventos(data);
@@ -33,7 +37,8 @@ const Eventos = () => {
 
         const evento = {
             nome: nome, 
-            descricao: descricao
+            descricao: descricao,
+            urlImagem: urlImagem
         }
 
         if(id==="")
@@ -58,6 +63,7 @@ const Eventos = () => {
             setId(id);
             setNome(result.data().nome);
             setDescricao(result.data().descricao);
+            setUrlImagem(result.data().urlImagem);
         } 
         catch (error) {
             console.log(error);
@@ -68,6 +74,17 @@ const Eventos = () => {
         setId("");
         setNome("");
         setDescricao("");
+        setUrlImagem("");
+    }
+
+    const erro = error => {
+        console.log(error);
+    }
+
+    const sucesso = async filename => {
+        //Pega a url da imagem especificada em child, na pasta especificada em ref.
+        const url = await storage.ref("imagens").child(filename).getDownloadURL();
+        setUrlImagem(url);
     }
 
     return (
@@ -89,6 +106,19 @@ const Eventos = () => {
                             <Form.Control as="textarea" rows={3} value={descricao} onChange={event => setDescricao(event.target.value)}/>
                         </Form.Group>
 
+                        <label style={{padding: "10px", backgroundColor: "blueviolet", borderRadius: "10px", color: "white", display: "flex", flexDirection: "column", width: "auto", maxWidth: "175px"}}>
+                            Selecionar imagem
+                            <FileUploader
+                                hidden //Esconde esse elemento pois oe stilo original dele é feio.
+                                accept="image/*" //Só aceita imagens, de qualquer extensão
+                                randomizeFilename //Faz com que as imagens não tenham nomes iguais.
+                                storageRef={storage.ref("imagens")} //Nome da pasta do storage do projeto no firebase que você deseja guardar as imagens
+                                onUploadError={erro} //Se der erro ao enviar pro firebase, ele já captura o erro, e chama a função que o desenvolvedor especificar, passando o erro.
+                                onUploadSuccess={sucesso} //Se der sucesso ao enviar pro firebase, ele já captura o nome do arquivo, e chama a função que o desenvolvedor especificar, passando o nome.
+                            />
+                        </label>
+                        {urlImagem && <img src={urlImagem} style={{width: "150px"}}/>}<br></br>
+
                         <Button variant="success" type="submit" style={{marginTop: "15px"}}>
                             Salvar
                         </Button>
@@ -102,6 +132,7 @@ const Eventos = () => {
                             <Col xs="4" key={index}>
                                 <Card>
                                     <Card.Body>
+                                        <Card.Img variant="top" src={item.urlImagem} />
                                         <Card.Title>{item.nome}</Card.Title>
                                         <Card.Text>
                                             {item.descricao}

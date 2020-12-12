@@ -16,3 +16,6 @@ const app = firebase.initializeApp(firebaseConfig);
 
 //O firestore é um banco de dados NoSQL na nuvem do Google, um banco realtime (você precisa criar o banco no firebase para o projeto).
 export const db = app.firestore();
+
+//O storage é usado para armazenar arquivos enviados pelos usuários, como fotos, vídeos, etc.
+export const storage = app.storage();
