@@ -13,7 +13,7 @@ import Eventos from "./pages/eventos/eventos";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/*Aqui, coloque esta tag passando as configurações do projeto no firebase, referenciado ele.*/}
+    {/*Aqui, coloque esta tag passando as configurações do projeto no firebase, referenciando ele.*/}
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
       <Eventos/>
     </FirebaseAppProvider>
