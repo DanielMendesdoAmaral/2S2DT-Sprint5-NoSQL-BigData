@@ -1,1 +1,1 @@
-# 2S2DT-Sprint5-NoSQL
+Aulas da sprint 5 (NoSQL/BigData) do 2º semestre do curso Técnico de Desenvolvimento de Sistemas.
